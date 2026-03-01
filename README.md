@@ -1,235 +1,212 @@
-🎬 CineVerse AI — Movie Recommendation System
+# 🎬 CineVerse AI  
+### Hybrid Movie Recommendation Intelligence System  
 
-AI-Powered Hybrid Movie Recommendation System using TF-IDF + TMDB API
-Deployed with FastAPI (Render) + Streamlit (Cloud)
+A **production-grade full-stack AI application** that delivers personalized movie recommendations using **Content-Based Filtering (TF-IDF + Cosine Similarity)** and **Live TMDB Genre Discovery** — deployed with **FastAPI (Render)** and **Streamlit Cloud**.
 
-🌐 Live Demo
+This project demonstrates real-world ML deployment, backend–frontend architecture, API orchestration, and hybrid recommendation intelligence — all inside a premium, recruiter-ready cinematic dashboard.
 
-Frontend (Streamlit):
-👉 https://movierecommendationsystem-8m8wezfpsucndtz8xuuh7d.streamlit.app/
+---
 
-Backend (FastAPI – Render):
-👉 Deployed on Render (Private API Service)
+## 🚀 Live Application
 
-🚀 Overview
+👉 **https://movierecommendationsystem-8m8wezfpsucndtz8xuuh7d.streamlit.app/**  
 
-CineVerse AI is a full-stack movie recommendation system that combines:
+---
 
-🔎 Content-based filtering (TF-IDF + Cosine Similarity)
+## 📸 Application Preview
 
-🎭 Genre-based recommendations (TMDB Discover API)
+<p align="center">
+  <img src="screenshots/home.png" width="850"/>
+  <br/><br/>
+  <img src="screenshots/details.png" width="850"/>
+  <br/><br/>
+  <img src="screenshots/recommendations.png" width="850"/>
+</p>
 
-🎬 Live movie metadata from TMDB
+---
 
-⚡ FastAPI backend
+## 🏗️ System Architecture
 
-🎨 Premium Streamlit frontend
+1️⃣ User interacts with a premium Streamlit UI  
+2️⃣ Frontend sends request to FastAPI backend (Render)  
+3️⃣ Backend performs:
+   - TF-IDF similarity computation  
+   - TMDB metadata retrieval  
+   - Genre-based discovery  
+4️⃣ Hybrid recommendation bundle is returned  
+5️⃣ Results rendered in a cinematic UI grid  
 
-The system provides:
+---
 
-Trending movies
+## ✨ Project Highlights
 
-Search suggestions
+- Hybrid Recommendation System (Content + Genre)  
+- Sparse Matrix TF-IDF similarity (efficient & scalable)  
+- Real-time TMDB API integration  
+- Fully separated Backend & Frontend  
+- Production deployment (Render + Streamlit Cloud)  
+- Premium dark UI with glassmorphism effects  
+- Designed for FAANG-level portfolios  
 
-Movie details
+---
 
-Similar movies (TF-IDF)
+## 🧠 Problem Statement
 
-Genre-based recommendations
+Most movie recommenders either use collaborative filtering (requires user data) or static similarity models.
 
-🧠 Recommendation Architecture
-1️⃣ Content-Based (TF-IDF)
+Real-world systems require:
 
-Preprocessed movie metadata
+- Content-based reasoning  
+- Genre-based discovery  
+- Real-time metadata  
+- Hybrid intelligence logic  
 
-TF-IDF vectorization
+CineVerse AI solves this using a hybrid recommendation engine.
 
-Cosine similarity computation
+---
 
-Precomputed sparse matrix
+## 🧠 Recommendation Logic
 
-Real-time similarity scoring
+### 🔍 Content-Based Filtering (TF-IDF)
 
-Used for:
-Similar Movies (Content Based)
+- Movie metadata vectorized  
+- Cosine similarity computed  
+- Top-N similar movies selected  
+- Efficient sparse matrix operations  
 
-2️⃣ Genre-Based (TMDB Discover API)
+Similarity formula:
+similarity = (TFIDF_matrix @ query_vector.T)
 
-Fetch selected movie genre
 
-Query TMDB discover endpoint
+---
 
-Filter out current movie
+### 🎭 Genre-Based Recommendation (TMDB Discover API)
 
-Return popular movies in same genre
+- Fetch selected movie genre  
+- Query TMDB Discover endpoint  
+- Return popular movies in same genre  
+- Remove current movie from results  
 
-Used for:
-More Like This (Genre)
+---
 
-🏗️ Tech Stack
-🔹 Backend
+## 🖥️ Tech Stack
 
-FastAPI
+### 💻 Backend
+- FastAPI  
+- Uvicorn  
+- HTTPX  
+- Pandas  
+- NumPy  
+- Scikit-learn  
+- Pickle (Precomputed TF-IDF matrix)  
 
-Uvicorn
+### 🎨 Frontend
+- Streamlit  
+- Custom CSS (Premium Cinematic UI)  
 
-httpx
+### ☁️ Deployment
+- Render (FastAPI backend)  
+- Streamlit Cloud (Frontend)  
 
-Pandas
+---
 
-NumPy
+## 📁 Project Structure
 
-Scikit-learn
-
-Pickle (Precomputed TF-IDF matrix)
-
-TMDB API
-
-🔹 Frontend
-
-Streamlit
-
-Custom CSS (Glassmorphism + Premium UI)
-
-Responsive grid layout
-
-🔹 Deployment
-
-Render (FastAPI backend)
-
-Streamlit Cloud (Frontend)
-
-📁 Project Structure
 movie-recommendation-system/
 │
-├── main.py                  # FastAPI backend
-├── app.py                   # Streamlit frontend
-├── df.pkl                   # Cleaned movie dataset
-├── tfidf.pkl                # TF-IDF vectorizer
-├── tfidf_matrix.pkl         # Sparse matrix
-├── indices.pkl              # Title-to-index mapping
-├── movies_metadata.csv      # Raw dataset
+├── main.py
+├── app.py
+├── df.pkl
+├── tfidf.pkl
+├── tfidf_matrix.pkl
+├── indices.pkl
+├── movies_metadata.csv
 ├── requirements.txt
 └── README.md
 
-⚙️ How It Works (Flow)
 
-User opens Streamlit app
+---
 
-Frontend calls FastAPI backend
+## ▶️ Run Locally
 
-Backend:
+git clone https://github.com/kamrankausher/Movie_Recommendation_System.git
+cd Movie_Recommendation_System
 
-Fetches movie data from TMDB
-
-Runs TF-IDF similarity
-
-Returns combined recommendation bundle
-
-Frontend renders posters + details
-
-🧪 Local Setup
-1️⃣ Clone Repository
-
-git clone https://github.com/yourusername/movie-recommendation-system.git
-cd movie-recommendation-system
-
-2️⃣ Create Virtual Environment
 python -m venv venv
-venv\Scripts\activate   # Windows
+venv\Scripts\activate
 
-3️⃣ Install Dependencies
 pip install -r requirements.txt
 pip install uvicorn fastapi python-dotenv httpx
 
-4️⃣ Add TMDB API Key
+# Add .env file
+TMDB_API_KEY=your_tmdb_key_here
 
-Create .env file:
-TMDB_API_KEY=your_tmdb_api_key_here
-
-Get API key from:
-https://www.themoviedb.org/settings/api
-
-5️⃣ Run Backend
+# Run backend
 uvicorn main:app --reload
 
-6️⃣ Run Frontend
-
-In new terminal:
+# Run frontend
 streamlit run app.py
 
-🌍 Deployment Architecture
-🔹 Backend (Render)
 
-Deployed as Web Service
+---
 
-Environment variable:
-TMDB_API_KEY=xxxx
+## ☁️ Deployment
 
-Auto deploy from GitHub
+### 🚀 Backend (Render)
 
-🔹 Frontend (Streamlit Cloud)
+1. Create Web Service  
+2. Connect GitHub repository  
+3. Add environment variable:
+TMDB_API_KEY=your_key
 
-Connected to GitHub
+4. Start command:
+uvicorn main:app --host 0.0.0.0 --port 10000
+---
 
-app.py as entry file
+### 🌐 Frontend (Streamlit Cloud)
 
-API_BASE updated to Render URL
+1. Connect GitHub repo  
+2. Set `app.py` as entry file  
+3. Update `API_BASE` to Render backend URL  
+4. Deploy  
 
-🔥 Features
+---
 
-✔ Trending Movies
-✔ Popular / Top Rated / Upcoming
-✔ Real-time TMDB search
-✔ Content-based similarity
-✔ Genre recommendations
-✔ Premium UI
-✔ Fully deployed production app
-✔ Clean REST API structure
+## 🎯 Use Cases
 
-📊 Recommendation Logic
+- AI/ML Portfolio Project  
+- FAANG Interview Demonstration  
+- Hybrid Recommender Showcase  
+- Production Deployment Example  
+- REST API + ML Architecture Case Study  
 
-Cosine Similarity:
-similarity = (TFIDF_matrix @ query_vector.T)
+---
 
-Sorted by highest score excluding self-match.
+## 🔮 Future Enhancements
 
-🎯 Why This Project Matters
+- Collaborative Filtering  
+- User Login & Watchlist  
+- Redis Caching  
+- Dockerized deployment  
+- Pagination & Lazy Loading  
+- React Frontend (Netflix-style UI)  
 
-This project demonstrates:
+---
 
-End-to-end ML deployment
+## 👤 Author
 
-Real-world API integration
+**Kamran Kausher**  
+Final-Year B.Tech CSE  
+AI / ML / Generative AI Engineer  
 
-Backend + Frontend architecture
+---
 
-Production-level deployment
+## 🌐 Connect With Me
 
-Clean code separation
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=plastic&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kamran-kausher-7585b0370)  
+[![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?style=plastic&logo=github&logoColor=white)](https://github.com/kamrankausher)  
+[![Email](https://img.shields.io/badge/Email-D14836?style=plastic&logo=gmail&logoColor=white)](mailto:kamrankausher@gmail.com)
 
-Efficient sparse matrix handling
+---
 
-Hybrid recommendation system design
-
-🏆 Future Improvements
-
-Collaborative Filtering
-
-User Authentication
-
-Watchlist system
-
-Caching layer (Redis)
-
-Pagination
-
-Dockerized deployment
-
-React frontend (Netflix-level UI)
-
-👨‍💻 Author
-
-Kamran Kausher
-B.Tech CSE | AI/ML Enthusiast
-Building production-grade ML systems.
+⭐ This project demonstrates end-to-end ML system design, hybrid recommendation architecture, clean backend engineering, and production deployment — not just model accuracy.
