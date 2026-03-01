@@ -1,9 +1,9 @@
 # 🎬 CineVerse AI  
-### Hybrid Movie Recommendation Intelligence System  
+### Movie Recommendation Intelligence System  
 
 A **production-grade full-stack AI application** that delivers personalized movie recommendations using **Content-Based Filtering (TF-IDF + Cosine Similarity)** and **Live TMDB Genre Discovery** — deployed with **FastAPI (Render)** and **Streamlit Cloud**.
 
-This project demonstrates real-world ML deployment, backend–frontend architecture, API orchestration, and hybrid recommendation intelligence — all inside a premium, recruiter-ready cinematic dashboard.
+This project demonstrates real-world ML deployment, backend–frontend architecture, API orchestration, and hybrid recommendation intelligence dashboard.
 
 ---
 
@@ -130,6 +130,7 @@ movie-recommendation-system/
 ## ▶️ Run Locally
 
 git clone https://github.com/kamrankausher/Movie_Recommendation_System.git
+
 cd Movie_Recommendation_System
 
 python -m venv venv
@@ -138,13 +139,13 @@ venv\Scripts\activate
 pip install -r requirements.txt
 pip install uvicorn fastapi python-dotenv httpx
 
-# Add .env file
+### Add .env file
 TMDB_API_KEY=your_tmdb_key_here
 
-# Run backend
+### Run backend
 uvicorn main:app --reload
 
-# Run frontend
+### Run frontend
 streamlit run app.py
 
 
@@ -197,7 +198,7 @@ uvicorn main:app --host 0.0.0.0 --port 10000
 
 **Kamran Kausher**  
 Final-Year B.Tech CSE  
-AI / ML / Generative AI Engineer  
+AI/ML & Generative AI Engineer  
 
 ---
 
