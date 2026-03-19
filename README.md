@@ -33,6 +33,7 @@ This project demonstrates real-world ML deployment, backend–frontend architect
    - TF-IDF similarity computation  
    - TMDB metadata retrieval  
    - Genre-based discovery  
+
 4️⃣ Hybrid recommendation bundle is returned  
 5️⃣ Results rendered in a cinematic UI grid  
 
