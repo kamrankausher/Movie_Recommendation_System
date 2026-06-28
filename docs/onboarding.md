@@ -27,7 +27,7 @@ The system has two parts:
 ┌─────────────┐     HTTP      ┌──────────────────────────────────┐
 │  Streamlit  │ ──────────>   │  FastAPI Backend                 │
 │  Frontend   │  <──────────  │                                  │
-│  (app.py)   │     JSON      │  ┌───────────┐  ┌────────────┐  │
+│  (streamlit_app.py)│     JSON      │  ┌───────────┐  ┌────────────┐  │
 └─────────────┘               │  │ TF-IDF    │  │ TMDB API   │  │
                               │  │ Recomm.   │  │ Service    │  │
                               │  │ Service   │  │            │  │
@@ -64,13 +64,12 @@ movie-recommendation-system/
 ├── tests/                      # Pytest test suite
 ├── scripts/                    # Benchmark and utility scripts
 ├── docs/                       # Documentation (this file)
-├── frontend/                   # Streamlit UI (optional, app.py in root)
-├── df.pkl                      # Preprocessed movie DataFrame (45,447 rows)
-├── tfidf_matrix.pkl            # Precomputed TF-IDF sparse matrix
-├── tfidf.pkl                   # Fitted TF-IDF vectorizer
-├── indices.pkl                 # Title-to-index mapping
+├── data/                       # Precomputed Models and Datasets
+│   ├── df.pkl                  # Preprocessed movie DataFrame (45,447 rows)
+│   ├── tfidf_matrix.pkl        # Precomputed TF-IDF sparse matrix
+│   ├── tfidf.pkl               # Fitted TF-IDF vectorizer
+│   └── indices.pkl             # Title-to-index mapping
 ├── requirements.txt            # Python dependencies
-├── Dockerfile                  # Container configuration
 ├── render.yaml                 # Render deployment config
 └── README.md                   # Project README
 ```
@@ -106,7 +105,7 @@ copy .env.example .env
 uvicorn app.main:app --reload --port 8000
 
 # 6. (Optional) Start the frontend
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
 ---
