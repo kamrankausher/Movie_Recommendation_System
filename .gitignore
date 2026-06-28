@@ -1,3 +1,31 @@
+# Environment
 .env
 .venv
-__pycache__
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+# Data files
+data/*.pkl
+data/*.csv
+
+# Virtual environments
+venv2/

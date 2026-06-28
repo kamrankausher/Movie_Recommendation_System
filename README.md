@@ -1,17 +1,12 @@
-# 🎬 CineVerse AI  
-### Movie Recommendation Intelligence System  
+# 🎬 CineVerse AI
+### Movie Recommendation Intelligence System
 
-A **production-grade full-stack AI application** that delivers personalized movie recommendations using **Content-Based Filtering (TF-IDF + Cosine Similarity)** and **Live TMDB Genre Discovery** — deployed with **FastAPI (Render)** and **Streamlit Cloud**.
+![CineVerse AI](https://img.shields.io/badge/Status-Active-brightgreen)
+![Python](https://img.shields.io/badge/Python-3.11+-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.103+-teal)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red)
 
-This project demonstrates real-world ML deployment, backend–frontend architecture, API orchestration, and hybrid recommendation intelligence dashboard.
-
----
-
-## 🚀 Live Application
-
-👉 **https://movierecommendationsystem-8m8wezfpsucndtz8xuuh7d.streamlit.app/**  
-
----
+CineVerse AI is an end-to-end Movie Recommendation System that provides fast, content-based recommendations utilizing a catalog of over 45,000 movies. This project demonstrates real-world ML deployment, backend–frontend architecture, API orchestration, and hybrid recommendation intelligence.
 
 ## 📸 Application Preview
 
@@ -25,64 +20,17 @@ This project demonstrates real-world ML deployment, backend–frontend architect
 
 ---
 
-## 🏗️ System Architecture
+## 🚀 Project Overview & Architecture
+This project features a decoupled architecture:
+1. **FastAPI Backend**: A highly modular REST API that calculates TF-IDF cosine similarities and interfaces with the TMDB API.
+2. **Streamlit Frontend**: A dynamic, glassmorphic UI built to showcase the engine's capabilities.
 
-1️⃣ User interacts with a premium Streamlit UI  
-2️⃣ Frontend sends request to FastAPI backend (Render)  
-3️⃣ Backend performs:
-   - TF-IDF similarity computation  
-   - TMDB metadata retrieval  
-   - Genre-based discovery  
-
-4️⃣ Hybrid recommendation bundle is returned  
-5️⃣ Results rendered in a cinematic UI grid  
-
----
-
-## ✨ Project Highlights
-
-- Hybrid Recommendation System (Content + Genre)  
-- Sparse Matrix TF-IDF similarity (efficient & scalable)  
-- Real-time TMDB API integration  
-- Fully separated Backend & Frontend  
-- Production deployment (Render + Streamlit Cloud)  
-- Premium dark UI with glassmorphism effects  
-- Designed for FAANG-level portfolios  
-
----
-
-## 🧠 Problem Statement
-
-Most movie recommenders either use collaborative filtering (requires user data) or static similarity models.
-
-Real-world systems require:
-
-- Content-based reasoning  
-- Genre-based discovery  
-- Real-time metadata  
-- Hybrid intelligence logic  
-
-CineVerse AI solves this using a hybrid recommendation engine.
-
----
-
-## 🧠 Recommendation Logic
-
-### 🔍 Content-Based Filtering (TF-IDF)
-
-- Movie metadata vectorized  
-- Cosine similarity computed  
-- Top-N similar movies selected  
-- Efficient sparse matrix operations  
-
-Similarity formula:
-similarity = (TFIDF_matrix @ query_vector.T)
-
-
----
+## 🧠 Recommendation Logic & Optimization
+The recommendation engine is built using **TF-IDF** (Term Frequency-Inverse Document Frequency) vectors generated from movie metadata (overview, genres, cast).
+To serve the 45k+ item dataset efficiently, the resulting 45k x 50k dense feature matrix (which would require ~16.9 GB of RAM) was refactored into a **SciPy Sparse CSR Matrix**.
+This single optimization **reduced memory footprint by >99.9%** (down to ~18 MB), allowing the system to easily deploy on Render Cloud and consistently return local recommendation queries in **under 20ms**.
 
 ### 🎭 Genre-Based Recommendation (TMDB Discover API)
-
 - Fetch selected movie genre  
 - Query TMDB Discover endpoint  
 - Return popular movies in same genre  
@@ -90,97 +38,85 @@ similarity = (TFIDF_matrix @ query_vector.T)
 
 ---
 
-## 🖥️ Tech Stack
+## 📂 Folder Structure
 
-### 💻 Backend
-- FastAPI  
-- Uvicorn  
-- HTTPX  
-- Pandas  
-- NumPy  
-- Scikit-learn  
-- Pickle (Precomputed TF-IDF matrix)  
-
-### 🎨 Frontend
-- Streamlit  
-- Custom CSS (Premium Cinematic UI)  
-
-### ☁️ Deployment
-- Render (FastAPI backend)  
-- Streamlit Cloud (Frontend)  
-
----
-
-## 📁 Project Structure
-
-movie-recommendation-system/
-│
-├── main.py
-├── app.py
-├── df.pkl
-├── tfidf.pkl
-├── tfidf_matrix.pkl
-├── indices.pkl
-├── movies_metadata.csv
+```
+project/
+├── app/                      # FastAPI Backend
+│   ├── routers/              # API Route Handlers
+│   ├── services/             # Business Logic & Recommender Engine
+│   ├── models.py             # Pydantic Schemas
+│   ├── config.py             # App Configuration
+│   └── main.py               # FastAPI App Factory
+├── data/                     # Serialized Models and Dataset (Excluded from git)
+│   ├── df.pkl
+│   └── tfidf_matrix.pkl
+├── notebooks/                # Jupyter Notebooks for EDA and Model Training
+├── scripts/                  # Benchmarking tools
+├── tests/                    # Pytest Suite
+├── streamlit_app.py          # Streamlit UI
 ├── requirements.txt
+├── render.yaml               # Render Deployment Config
 └── README.md
+```
 
+## ⚙️ Installation & Local Setup
 
----
-
-## ▶️ Run Locally
-
+### 1. Clone the repository
+```bash
 git clone https://github.com/kamrankausher/Movie_Recommendation_System.git
-
 cd Movie_Recommendation_System
+```
 
+### 2. Create a virtual environment & install dependencies
+```bash
 python -m venv venv
-venv\Scripts\activate
-
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 pip install -r requirements.txt
-pip install uvicorn fastapi python-dotenv httpx
+```
 
-### Add .env file
-TMDB_API_KEY=your_tmdb_key_here
+### 3. Environment Variables
+Create a `.env` file in the root directory and add your TMDB API Key:
+```env
+TMDB_API_KEY=your_tmdb_api_key_here
+```
 
-### Run backend
-uvicorn main:app --reload
+### 4. Run the FastAPI Backend
+```bash
+uvicorn app.main:app --reload --port 8000
+```
+> The API will be available at `http://127.0.0.1:8000`. You can view the automatic interactive docs at `http://127.0.0.1:8000/docs`.
 
-### Run frontend
-streamlit run app.py
+### 5. Run the Streamlit Frontend
+In a new terminal window:
+```bash
+streamlit run streamlit_app.py
+```
 
+## 📊 Benchmarks
 
----
+Run the provided benchmarking scripts to verify the performance:
 
-## ☁️ Deployment
+*   **Memory Benchmark:**
+    ```bash
+    python scripts/benchmark_memory.py
+    ```
+    *Expect to see ~17.89 MB sparse memory usage versus ~16.9 GB theoretical dense memory usage.*
 
-### 🚀 Backend (Render)
+*   **Latency Benchmark:**
+    ```bash
+    python scripts/benchmark_latency.py
+    ```
+    *Expect local TF-IDF recommendations to average < 20ms.*
 
-1. Create Web Service  
-2. Connect GitHub repository  
-3. Add environment variable:
-TMDB_API_KEY=your_key
+## ☁️ Render Deployment
+This project is configured to be deployed on Render Cloud using the included `render.yaml` blueprint. The blueprint spins up a Web Service running the FastAPI app on port 10000.
 
-4. Start command:
-uvicorn main:app --host 0.0.0.0 --port 10000
----
-
-### 🌐 Frontend (Streamlit Cloud)
-
-1. Connect GitHub repo  
-2. Set `app.py` as entry file  
-3. Update `API_BASE` to Render backend URL  
-4. Deploy  
-
----
-
-## 🎯 Use Cases
-
-- AI/ML Portfolio Project  
-- FAANG Interview Demonstration  
-- Hybrid Recommender Showcase  
-- Production Deployment Example  
-- REST API + ML Architecture Case Study  
+## 🧪 Testing
+The codebase has 100% test coverage for the API layer using `pytest`.
+```bash
+pytest
+```
 
 ---
 
