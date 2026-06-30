@@ -6,7 +6,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.103+-teal)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red)
 
-CineVerse AI is an end-to-end Movie Recommendation System that provides fast, content-based recommendations utilizing a catalog of over 45,000 movies. This project demonstrates real-world ML deployment, backend–frontend architecture, API orchestration, and hybrid recommendation intelligence.
+CineVerse AI is an end-to-end Movie Recommendation System that provides fast, content-based recommendations utilizing a catalog of over 10,000+ movies. This project demonstrates real-world ML deployment, backend–frontend architecture, API orchestration, and hybrid recommendation intelligence.
 
 ## 📸 Application Preview
 
@@ -27,8 +27,8 @@ This project features a decoupled architecture:
 
 ## 🧠 Recommendation Logic & Optimization
 The recommendation engine is built using **TF-IDF** (Term Frequency-Inverse Document Frequency) vectors generated from movie metadata (overview, genres, cast).
-To serve the 45k+ item dataset efficiently, the resulting 45k x 50k dense feature matrix (which would require ~16.9 GB of RAM) was refactored into a **SciPy Sparse CSR Matrix**.
-This single optimization **reduced memory footprint by >99.9%** (down to ~18 MB), allowing the system to easily deploy on Render Cloud and consistently return local recommendation queries in **under 20ms**.
+To serve the 10k+ item dataset efficiently, the resulting 45k x 50k dense feature matrix (which would require ~16.9 GB of RAM) was refactored into a **SciPy Sparse CSR Matrix**.
+This single optimization **reduced memory footprint by >60%** (down to ~18 MB), allowing the system to easily deploy on Render Cloud and consistently return local recommendation queries in **under 20ms**.
 
 ### 🎭 Genre-Based Recommendation (TMDB Discover API)
 - Fetch selected movie genre  
